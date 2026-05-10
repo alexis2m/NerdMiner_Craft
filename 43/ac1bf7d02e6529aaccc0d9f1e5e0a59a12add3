@@ -1,0 +1,20 @@
+src/NerdMinerV2.ino.cpp
+  s_61fc6136a61861::t_453e11a2dff9fe 74-80,83-85,88-91,94-97
+  s_61fc6136a61861::t_c25772f2e6deb6 112-116
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "43ac1bf7d02e6529aaccc0d9f1e5e0a59a12add3",
+  "prompts": {},
+  "sessions": {
+    "s_61fc6136a61861": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a310031-db8b-4fc4-96a9-ea29b9298e43",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Alexis <hello@alexismaison.com>"
+    }
+  }
+}
