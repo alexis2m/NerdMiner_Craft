@@ -1,0 +1,70 @@
+name: Bug report
+description: Report something that is broken on a NerdMiner_Craft build.
+title: "[Bug] "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug. Hardware issues are hard to reproduce remotely, so please fill in as much as you can — especially the board variant and a serial log at 115200 baud.
+  - type: dropdown
+    id: board
+    attributes:
+      label: Board / display variant
+      description: Which Freenove FNK0103 model are you running?
+      options:
+        - Freenove FNK0103 — 2.8" ST7789 TN (320x240)
+        - Freenove FNK0103 — 2.8" ILI9341 TN (320x240)
+        - Freenove FNK0103 — 3.2" ST7789 IPS (320x240)
+        - Freenove FNK0103 — 3.5" ST7796 TN (480x320)
+        - Freenove FNK0103 — 4.0" ST7796 TN (480x320)
+        - Other (describe in "What happened" below)
+    validations:
+      required: true
+  - type: input
+    id: firmware-version
+    attributes:
+      label: Firmware version or commit
+      placeholder: "e.g. v0.1.0, or commit abc1234"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the actual behavior. Paste serial logs (115200 baud) inside a code block.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Numbered list, please. Include configuration (pool address, BTC address format, Wi-Fi band) when relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: media
+    attributes:
+      label: Photos / video
+      description: A picture of the screen helps a lot for display bugs. Drag-and-drop image files here.
+  - type: input
+    id: pool
+    attributes:
+      label: Mining pool (if relevant)
+      placeholder: "e.g. public-pool.io:21496"
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I have searched existing issues and discussions for duplicates.
+          required: true
+        - label: This bug reproduces on NerdMiner_Craft (not only on upstream NerdMiner_v2).
+          required: true

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Upstream NerdMiner_v2 (BitMaker-hub)
+    url: https://github.com/BitMaker-hub/NerdMiner_v2/issues
+    about: For bugs that reproduce on the original BitMaker-hub firmware. NerdMiner_Craft only handles issues specific to its FNK0103 variants and Minecraft theme.
+  - name: Discussions
+    url: https://github.com/alexis2m/NerdMiner_Craft/discussions
+    about: Ask questions, share custom themes, or brainstorm ideas before opening an issue.
