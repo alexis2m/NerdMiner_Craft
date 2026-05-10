@@ -1,0 +1,25 @@
+docs/build-and-flash.md
+  s_61fc6136a61861::t_0e9248dde77588 31-39
+src/drivers/displays/esp23_2432s028r.cpp
+  s_61fc6136a61861::t_1a8d49efc505bb 66-69,75,77
+platformio.ini
+  s_61fc6136a61861::t_e047c55b0524ed 1169-1250
+.github/workflows/build.yml
+  s_61fc6136a61861::t_f6ebfdf3fa99eb 39-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "a56a96d4e1ad097a602d9afafe724ff174dec867",
+  "prompts": {},
+  "sessions": {
+    "s_61fc6136a61861": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a310031-db8b-4fc4-96a9-ea29b9298e43",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Alexis <hello@alexismaison.com>"
+    }
+  }
+}
