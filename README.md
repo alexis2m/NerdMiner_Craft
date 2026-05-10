@@ -1,4 +1,25 @@
-# NerdSoloMiner
+# NerdMiner_Craft
+
+> **Minecraft-themed Bitcoin solo miner for the Freenove FNK0103 ESP32 Display.**
+>
+> This is a fork of [BitMaker-hub/NerdMiner_v2](https://github.com/BitMaker-hub/NerdMiner_v2) with two narrow goals:
+>
+> 1. First-class support for the **Freenove FNK0103** family of ESP32 displays (2.8" / 3.2" / 3.5" / 4.0" variants).
+> 2. A **Minecraft-style** UI: pixel-art screens, swinging-pickaxe mining animation, block-themed clock.
+>
+> Everything else is inherited from upstream. If you're on a board upstream already supports and you don't want the Minecraft theme, you probably want the [original repo](https://github.com/BitMaker-hub/NerdMiner_v2) instead.
+>
+> **Status:** active development. No tagged release yet. See [`CHANGELOG.md`](CHANGELOG.md) for what's done and what's planned.
+>
+> **New here?** Start with [`SUPPORT.md`](SUPPORT.md). Want to contribute? Read [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+---
+
+## Upstream README (NerdSoloMiner v2)
+
+The rest of this document is inherited from upstream. Sections relevant to NerdMiner_Craft will be replaced as Freenove-specific instructions are written; everything below the line is the original project description and may not all apply to your FNK0103 build.
+
+---
 
 **The NerdSoloMiner v2**
 
