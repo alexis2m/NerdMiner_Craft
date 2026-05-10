@@ -28,15 +28,15 @@ pio project config | grep "^\[env:NerdMiner_Craft"
 
 Pick the env matching your hardware:
 
-| Variant | Env name |
-|---------|----------|
-| 2.8" ST7789 TN (320×240) | `NerdMiner_Craft-FNK0103-ST7789-28` |
-| 2.8" ILI9341 TN (320×240) | `NerdMiner_Craft-FNK0103-ILI9341-28` |
-| 3.2" ST7789 IPS (320×240) | `NerdMiner_Craft-FNK0103-ST7789-32-IPS` |
-| 3.5" ST7796 TN (480×320) | `NerdMiner_Craft-FNK0103-ST7796-35` |
-| 4.0" ST7796 TN (480×320) | `NerdMiner_Craft-FNK0103-ST7796-40` |
+| Variant | Env name | Status |
+|---------|----------|--------|
+| FNK0103B — 2.8" ST7789 TN (240×320) | `FNK0103B-ST7789-28` | ✅ available |
+| FNK0103F — 2.8" ILI9341 TN (240×320) | `ESP32-2432S028R` (upstream env) | ✅ available |
+| FNK0103L — 3.2" ST7789 IPS (240×320) | TBD | planned |
+| FNK0103N — 3.5" ST7796 TN (320×480) | TBD | planned |
+| FNK0103S — 4.0" ST7796 TN (320×480) | TBD | planned |
 
-> Some entries are TBD until the corresponding driver is merged. Check `platformio.ini` for the current set.
+The FNK0103B env reuses the upstream CYD display driver (`src/drivers/displays/esp23_2432s028r.cpp`) by also defining `ESP32_2432S028R=1`; the driver is controller-agnostic so only the TFT_eSPI build flags differ between the two envs. A dedicated FNK0103B driver can be split out later once the Minecraft theme has diverged enough to warrant it.
 
 ## Building
 

@@ -63,13 +63,18 @@ void esp32_2432S028R_Init(void)
   tft.invertDisplay(invertColors);
   tft.setRotation(1);    
   tft.setSwapBytes(true); // Swap the colour byte order when rendering
+#if defined(ILI9341_DRIVER) || defined(ILI9341_2_DRIVER)
+  // ILI9341-specific gamma re-curve, only relevant when colours are
+  // inverted (purely cosmetic). ST7789 uses different gamma registers
+  // and ships with acceptable defaults — skip the override there.
   if (invertColors) {
     tft.writecommand(ILI9341_GAMMASET);
     tft.writedata(2);
     delay(120);
     tft.writecommand(ILI9341_GAMMASET); //Gamma curve selected
-    tft.writedata(1); 
+    tft.writedata(1);
   }
+#endif
   hSPI.begin(TOUCH_CLK, TOUCH_MISO, TOUCH_MOSI, ETOUCH_CS);
   touch.init();
 
