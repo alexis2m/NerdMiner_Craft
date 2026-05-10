@@ -1,8 +1,16 @@
 .idea/
 .pio
-.vscode
 .vs
 *.sln
+
+# Merged-firmware output written by post_build_merge.py after every `pio run`
+firmware/
+
+# VS Code: ignore machine-specific files (PIO regenerates them per machine)
+# but keep the project-shared settings and extension recommendations tracked.
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 *.vcxproj*
 NerdMinerLog.txt
 bin/0x10000_firmware.bin

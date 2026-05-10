@@ -9,6 +9,15 @@ This is the procedure for building NerdMiner_Craft from source and flashing it t
 - A USB-C cable known to carry data (many cheap cables are charge-only).
 - macOS / Linux: no driver. Windows: install Silicon Labs CP210x or CH340 driver depending on the USB-UART chip on your specific board (Freenove documents which one in their hardware PDF).
 
+### VS Code setup (recommended)
+
+The repo ships project-shared VS Code config under `.vscode/`:
+
+- `extensions.json` recommends installing the [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) and [Wokwi](https://marketplace.visualstudio.com/items?itemName=wokwi.wokwi-vscode) extensions on first open. Accept the prompt.
+- `settings.json` prepends `/opt/homebrew/bin` to PATH for both the integrated terminal and PIO's internal subprocess calls. This sidesteps a common failure mode where a custom `git` wrapper (e.g. AI-augmented git tools installed under `~/.git-ai/`) breaks PIO's library manager with `Please install Git client`. If you're on Linux and your stock git lives elsewhere, edit `settings.json` to point at the right directory.
+
+If you only want the CLI without VS Code, install PIO Core directly: `pip install platformio` and ensure `pio` is on your shell PATH.
+
 ## Picking the right env
 
 Each FNK0103 variant has its own PlatformIO env. List them:
