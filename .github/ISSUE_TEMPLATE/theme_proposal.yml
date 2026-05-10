@@ -1,0 +1,50 @@
+name: Theme / sprite proposal
+description: Propose a new Minecraft sprite, animation frame, or screen layout.
+title: "[Theme] "
+labels: ["theme", "art"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for art and theme contributions. Attach the source PNG (transparent background where possible) plus the target screen or animation it belongs to.
+  - type: dropdown
+    id: target
+    attributes:
+      label: Target screen
+      options:
+        - NerdMiner (mining stats)
+        - Clock
+        - Global stats
+        - Boot / splash
+        - Wi-Fi setup / portal
+        - New screen (describe below)
+    validations:
+      required: true
+  - type: input
+    id: resolution
+    attributes:
+      label: Source resolution
+      placeholder: "e.g. 320x240, 480x320"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What does the sprite or animation represent? How many frames, what cadence, what triggers it?
+    validations:
+      required: true
+  - type: textarea
+    id: assets
+    attributes:
+      label: Assets
+      description: Drag-and-drop PNGs / GIFs here.
+    validations:
+      required: true
+  - type: textarea
+    id: license
+    attributes:
+      label: License / attribution
+      description: Confirm the assets are original or properly licensed for redistribution under GPLv3 (this project's license).
+    validations:
+      required: true

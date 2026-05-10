@@ -1,0 +1,10 @@
+{
+  // Permissive lint config — favor signal over noise on a hardware project.
+  // Tweak per file with markdownlint-disable comments if a rule fights with reality.
+  "default": true,
+  "MD013": false,        // Line length — long URLs and tables make this hostile.
+  "MD024": { "siblings_only": true }, // Allow repeated section names across siblings (e.g. CHANGELOG versions).
+  "MD033": false,        // Inline HTML — needed for screenshot <img width> tags.
+  "MD041": false,        // First line H1 — issue templates etc. don't start with one.
+  "MD046": { "style": "fenced" }
+}

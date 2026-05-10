@@ -1,13 +1,25 @@
+/**
+ * @file monitor.h
+ * @brief Telemetry aggregator that feeds every screen.
+ *
+ * The display drivers call the @c getXxxData() functions below to pull
+ * a snapshot of what they need to render. This header is the only thing
+ * a driver needs to include from the mining side — keep the screen
+ * implementations decoupled from `mining.cpp` internals.
+ */
 #ifndef MONITOR_API_H
 #define MONITOR_API_H
 
 #include <Arduino.h>
 
-// Monitor states
+/// Index into `cyclic_screens[]` — the live mining stats screen.
 #define SCREEN_MINING   0
+/// Index into `cyclic_screens[]` — the clock-with-stats screen.
 #define SCREEN_CLOCK    1
+/// Index into `cyclic_screens[]` — the global / network stats screen.
 #define SCREEN_GLOBAL   2
-#define NO_SCREEN       3   //Used when board has no TFT
+/// Sentinel for headless boards that have no panel at all.
+#define NO_SCREEN       3
 
 //Time update period
 #define UPDATE_PERIOD_h   5
@@ -38,10 +50,14 @@
 #define NEXT_HALVING_EVENT 1050000 //840000
 #define HALVING_BLOCKS 210000
 
+/**
+ * @brief Top-level state of the miner — used by the loading / setup
+ *        screens to choose what to render.
+ */
 enum NMState {
-  NM_waitingConfig,
-  NM_Connecting,
-  NM_hashing
+  NM_waitingConfig, ///< Captive portal is up, no Wi-Fi credentials yet.
+  NM_Connecting,    ///< Joining Wi-Fi or connecting to the Stratum pool.
+  NM_hashing        ///< Steady-state mining.
 };
 
 typedef struct{
@@ -123,14 +139,31 @@ typedef struct{
   String bestDifficulty;  // Your miners best difficulty
 }pool_data;
 
+/// One-shot monitor initialization. Spawns the FreeRTOS task that
+/// polls external APIs (BTC price, block height, fees, pool stats).
 void setup_monitor(void);
 
+/**
+ * @brief Snapshot for the mining-stats screen.
+ * @param mElapsed Milliseconds since the previous call from this screen.
+ *                 Used to compute instantaneous hashrate.
+ */
 mining_data getMiningData(unsigned long mElapsed);
+
+/// Snapshot for the clock screen (BTC price + light mining stats).
 clock_data getClockData(unsigned long mElapsed);
+
+/// Snapshot for the global-stats screen (network hashrate, halving, fees).
 coin_data getCoinData(unsigned long mElapsed);
+
+/// Snapshot of public-pool worker stats for *this* BTC address.
 pool_data getPoolData(void);
 
+/// Compact clock-only data used by displays that show a digital clock.
 clock_data_t getClockData_t(unsigned long mElapsed);
+
+/// Returns the configured public-pool API URL, suffixed with the
+/// user's BTC address.
 String getPoolAPIUrl(void);
 
 #endif //MONITOR_API_H

@@ -1,0 +1,6 @@
+lib/
+node_modules/
+.pio/
+bin/
+SLS/
+3d_files/

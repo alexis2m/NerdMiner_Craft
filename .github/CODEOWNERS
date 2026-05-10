@@ -1,0 +1,23 @@
+# NerdMiner_Craft code owners
+#
+# Order matters — last matching pattern wins. See:
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-security/customizing-your-repository/about-code-owners
+
+# Default owner for every file
+*                             @alexis2m
+
+# Build / CI / repo infrastructure
+/.github/                     @alexis2m
+/platformio.ini               @alexis2m
+/post_build_merge.py          @alexis2m
+/auto_firmware_version.py     @alexis2m
+
+# Display drivers + screen art
+/src/drivers/displays/        @alexis2m
+/src/media/                   @alexis2m
+
+# Mining / stratum core (changes here should be conservative — they affect every board)
+/src/mining.cpp               @alexis2m
+/src/mining.h                 @alexis2m
+/src/stratum.cpp              @alexis2m
+/src/stratum.h                @alexis2m

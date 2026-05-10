@@ -1,0 +1,41 @@
+name: Feature request
+description: Suggest a new screen, animation, theme, or capability.
+title: "[Feat] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing an idea. NerdMiner_Craft focuses on Minecraft-themed screens and FNK0103 support — features outside that scope may be a better fit for the upstream BitMaker-hub project.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: What's missing today, or what hurts the experience?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Sketch the behavior. For visual changes, mock-ups or pixel-art references are very welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - New Minecraft-themed screen
+        - Animation / transition
+        - Board / display support
+        - Configuration / WifiManager
+        - Performance / mining
+        - Documentation
+        - Other
+    validations:
+      required: true

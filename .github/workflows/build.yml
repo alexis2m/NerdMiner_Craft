@@ -1,0 +1,87 @@
+name: Build firmware
+
+on:
+  push:
+    branches:
+      - main
+      - "freenove-**"
+      - "feat/**"
+      - "fix/**"
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "PlatformIO env to build (leave blank for the default matrix)."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  matrix:
+    name: Plan
+    runs-on: ubuntu-latest
+    outputs:
+      envs: ${{ steps.set.outputs.envs }}
+    steps:
+      - id: set
+        shell: bash
+        run: |
+          input='${{ github.event.inputs.environment }}'
+          if [ -n "$input" ]; then
+            echo "envs=[\"$input\"]" >> "$GITHUB_OUTPUT"
+          else
+            # Default matrix: a small representative set so CI stays fast.
+            # FNK0103 envs are appended once their board profile is added.
+            echo 'envs=["NerdminerV2","ESP32-2432S028R"]' >> "$GITHUB_OUTPUT"
+          fi
+
+  build:
+    name: Build (${{ matrix.environment }})
+    needs: matrix
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        environment: ${{ fromJSON(needs.matrix.outputs.envs) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Cache PlatformIO
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.platformio/.cache
+            ~/.platformio/platforms
+            ~/.platformio/packages
+          key: ${{ runner.os }}-pio-${{ hashFiles('platformio.ini') }}
+          restore-keys: |
+            ${{ runner.os }}-pio-
+
+      - name: Install PlatformIO
+        run: pip install --upgrade platformio
+
+      - name: Build firmware
+        run: pio run -e "${{ matrix.environment }}"
+
+      - name: Upload firmware artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-${{ matrix.environment }}
+          path: |
+            .pio/build/${{ matrix.environment }}/firmware.bin
+            .pio/build/${{ matrix.environment }}/bootloader.bin
+            .pio/build/${{ matrix.environment }}/partitions.bin
+          if-no-files-found: warn
+          retention-days: 14
