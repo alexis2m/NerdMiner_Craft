@@ -1,0 +1,35 @@
+CHANGELOG.md
+  s_b2fae3527eaaba::t_2f483c9bdb272f 1-27
+.editorconfig
+  s_b2fae3527eaaba::t_66a59254c1bc8e 1-22
+SECURITY.md
+  s_b2fae3527eaaba::t_aaed07c378b968 1-35
+.markdownlintignore
+  s_b2fae3527eaaba::t_bfa4b2bf603fa6 1-6
+.markdownlint.jsonc
+  s_b2fae3527eaaba::t_c4c112c78014de 1-10
+README.md
+  s_b2fae3527eaaba::t_7382fa9e502ac0 1-22
+CODE_OF_CONDUCT.md
+  s_b2fae3527eaaba::t_692015aecdf9a7 1-55
+SUPPORT.md
+  s_b2fae3527eaaba::t_98fc7f56a4ec6f 1-26
+CONTRIBUTING.md
+  s_b2fae3527eaaba::t_70466298a87ecf 1-80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "84e8b538529200c2f6e9d7de9b361a801d0c7509",
+  "prompts": {},
+  "sessions": {
+    "s_b2fae3527eaaba": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "690026e5-516d-477b-9122-dcb4f5d410f5",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Alexis <hello@alexismaison.com>"
+    }
+  }
+}
