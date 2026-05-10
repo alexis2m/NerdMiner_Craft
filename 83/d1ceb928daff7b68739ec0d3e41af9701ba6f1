@@ -1,0 +1,26 @@
+.vscode/settings.json
+  s_61fc6136a61861::t_a995fdc51a6f11 1-32
+.gitignore
+  s_61fc6136a61861::t_aa01e885e64117 5,9-13
+  s_61fc6136a61861::t_6b16b89781e4e0 6-8
+.vscode/extensions.json
+  s_61fc6136a61861::t_7effa983ff9ffc 5-6
+docs/build-and-flash.md
+  s_61fc6136a61861::t_a755f62ce9af0a 12-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "83d1ceb928daff7b68739ec0d3e41af9701ba6f1",
+  "prompts": {},
+  "sessions": {
+    "s_61fc6136a61861": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a310031-db8b-4fc4-96a9-ea29b9298e43",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Alexis <hello@alexismaison.com>"
+    }
+  }
+}
