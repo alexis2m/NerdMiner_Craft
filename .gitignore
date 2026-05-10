@@ -8,3 +8,18 @@ NerdMinerLog.txt
 bin/0x10000_firmware.bin
 logs
 boards/ESP32_wroom_guide.md
+
+# Doxygen output
+docs/api/
+
+# Python tooling caches
+__pycache__/
+*.py[cod]
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vendored third-party reference material (CC BY-NC-SA, do not commit)
+Freenove_ESP32_Display/

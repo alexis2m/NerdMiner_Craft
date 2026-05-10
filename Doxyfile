@@ -1,0 +1,38 @@
+# Minimal Doxygen config for NerdMiner_Craft.
+# Run `doxygen Doxyfile` from the repo root to generate HTML API docs in docs/api/.
+# Anything not set here uses the Doxygen 1.9+ defaults.
+
+PROJECT_NAME           = "NerdMiner_Craft"
+PROJECT_BRIEF          = "Minecraft-themed Bitcoin solo miner for the Freenove FNK0103 ESP32 Display."
+PROJECT_NUMBER         = "see CHANGELOG.md"
+
+OUTPUT_DIRECTORY       = docs/api
+CREATE_SUBDIRS         = NO
+
+INPUT                  = src docs/architecture.md docs/screens.md docs/boards.md docs/build-and-flash.md README.md
+USE_MDFILE_AS_MAINPAGE = README.md
+RECURSIVE              = YES
+EXCLUDE                = src/ShaTests lib bin
+FILE_PATTERNS          = *.c *.cpp *.h *.hpp *.ino *.md
+
+EXTRACT_ALL            = YES
+EXTRACT_STATIC         = YES
+EXTRACT_PRIVATE        = NO
+JAVADOC_AUTOBRIEF      = YES
+QT_AUTOBRIEF           = YES
+MARKDOWN_SUPPORT       = YES
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+HTML_DYNAMIC_MENUS     = YES
+GENERATE_TREEVIEW      = YES
+DISABLE_INDEX          = NO
+HAVE_DOT               = NO
+
+QUIET                  = YES
+WARN_AS_ERROR          = NO
+WARN_NO_PARAMDOC       = NO
