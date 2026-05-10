@@ -1,0 +1,26 @@
+platformio.ini
+  s_61fc6136a61861::t_ecad1267fcb05d 1187
+src/media/minecraft_loading_320_170.h
+  s_61fc6136a61861::t_f0d9fb68595f65 1-4539
+src/drivers/displays/esp23_2432s028r.cpp
+  s_61fc6136a61861::t_11a490968033ce 520-525,532
+  s_61fc6136a61861::t_8f6acbbf213196 9-11
+tools/gen_minecraft_screens.py
+  s_61fc6136a61861::t_7e5dd597d4effd 1-205
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "d2d8305d7d884e9bfb214e06045dfb66cbfa9415",
+  "prompts": {},
+  "sessions": {
+    "s_61fc6136a61861": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a310031-db8b-4fc4-96a9-ea29b9298e43",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Alexis <hello@alexismaison.com>"
+    }
+  }
+}
