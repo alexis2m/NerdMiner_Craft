@@ -41,13 +41,22 @@ String poolAPIUrl;
 void setup_monitor(void){
     /******** TIME ZONE SETTING *****/
 
+#ifdef WOKWI_SIM
+    // NTPClient::begin() opens a UDP socket via lwIP, but lwIP isn't
+    // initialized in WOKWI_SIM mode (we never started Wi-Fi). Calling
+    // it triggers an assert in tcpip_send_msg_wait_sem and reboots
+    // the chip. Skip it — the mocked clock_data already provides a
+    // fixed currentTime string for the screens.
+    Serial.println(F(">>> WOKWI_SIM: skipping NTPClient::begin (no lwIP)"));
+#else
     timeClient.begin();
-    
+
     // Adjust offset depending on your zone
     // GMT +2 in seconds (zona horaria de Europa Central)
     timeClient.setTimeOffset(3600 * Settings.Timezone);
 
     Serial.println("TimeClient setup done");
+#endif
 #ifdef SCREEN_WORKERS_ENABLE
     poolAPIUrl = getPoolAPIUrl();
     Serial.println("poolAPIUrl: " + poolAPIUrl);
