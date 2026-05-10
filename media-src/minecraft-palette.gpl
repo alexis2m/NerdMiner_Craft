@@ -1,0 +1,40 @@
+GIMP Palette
+Name: NerdMiner_Craft - Minecraft
+Columns: 8
+# 32-color palette for the NerdMiner_Craft UI.
+# Loadable in Pixelorama (File > Import > Import as Palette) and Aseprite.
+# Hex values are derived from canonical Minecraft GUI / block / ore textures.
+#
+#  R   G   B  Name
+   0   0   0	Black
+ 255 255 255	White
+  31  31  31	GUI text shadow
+  55  55  55	GUI slot shadow
+ 139 139 139	GUI inventory mid
+ 198 198 198	GUI inventory light
+  85  85  85	GUI border
+ 255 255 170	GUI accent yellow
+ 134  96  67	Dirt
+  90  63  44	Dirt shadow
+  94 159  61	Grass
+  63 111  35	Grass shadow
+ 219 198 129	Sand
+ 125 125 125	Stone
+  92  92  92	Stone shadow
+ 140 140 140	Cobblestone
+  94  94  94	Cobblestone shadow
+ 156 127  78	Oak plank
+ 111  88  50	Oak shadow
+  80  61  34	Oak grain
+ 216 216 216	Iron
+ 160 160 160	Iron shadow
+ 255 217  59	Gold
+ 184 145  36	Gold shadow
+  93 236 245	Diamond
+  63 161 168	Diamond shadow
+ 226  43  23	Redstone
+  52  94 200	Lapis
+  23 221  98	Emerald
+ 255 106   0	Lava
+ 163  61   0	Lava shadow
+  63 118 228	Water

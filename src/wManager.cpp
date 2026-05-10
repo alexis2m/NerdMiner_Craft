@@ -135,6 +135,18 @@ void init_WifiManager()
 #else
     Serial.begin(115200);
 #endif //MONITOR_SPEED
+
+#ifdef WOKWI_SIM
+    // Bypass the captive portal entirely. Wokwi is sandboxed: nothing
+    // outside the simulator can connect to the AP, so the captive
+    // portal is not exercisable. Jump straight to NM_hashing so the
+    // cyclic mining-stats screens render — driven by mock data from
+    // monitor.cpp's getXxxData() (also gated on WOKWI_SIM).
+    Serial.println(F(">>> WOKWI_SIM: bypassing WiFiManager, mocking mining state"));
+    extern monitor_data mMonitor;
+    mMonitor.NerdStatus = NM_hashing;
+    return;
+#endif
     //Serial.setTxTimeoutMs(10);
     
     // Check for custom AP name from flasher config, otherwise use default
@@ -429,6 +441,10 @@ void init_WifiManager()
 int oldStatus = 0;
 
 void wifiManagerProcess() {
+#ifdef WOKWI_SIM
+    // No WiFiManager active in sim mode (see init_WifiManager).
+    return;
+#endif
 
     wm.process(); // avoid delays() in loop when non-blocking and other long running code
 

@@ -36,9 +36,9 @@ jobs:
           if [ -n "$input" ]; then
             echo "envs=[\"$input\"]" >> "$GITHUB_OUTPUT"
           else
-            # Default matrix: a small representative set so CI stays fast.
-            # FNK0103 envs are appended once their board profile is added.
-            echo 'envs=["NerdminerV2","ESP32-2432S028R"]' >> "$GITHUB_OUTPUT"
+            # Default matrix: keep this small so CI stays fast.
+            # Add other FNK0103 variants as their envs land.
+            echo 'envs=["NerdminerV2","ESP32-2432S028R","FNK0103B-ST7789-28"]' >> "$GITHUB_OUTPUT"
           fi
 
   build:

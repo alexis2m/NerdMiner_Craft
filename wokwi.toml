@@ -1,0 +1,35 @@
+# Wokwi simulator configuration.
+# https://docs.wokwi.com/vscode/getting-started
+#
+# How to run:
+#   1. `pio run -e <env>` to produce the .bin and .elf below.
+#   2. Open this file in VS Code with the "Wokwi for VS Code" extension installed.
+#   3. Hit F1 → "Wokwi: Start Simulator", or click the "Start Simulator" lens above.
+#   4. The diagram (diagram.json) opens alongside the running ESP32.
+#
+# Default points at the upstream ESP32-2432S028R env, which is the closest
+# already-buildable target to the FNK0103B hardware (same CYD family, ILI9341
+# variant). It will boot and render the existing upstream UI in the simulator
+# so we can verify the stack end-to-end before any board-specific code lands.
+#
+# When the [env:FNK0103B-ST7789-28] env exists, swap the two paths below to
+# .pio/build/FNK0103B-ST7789-28/firmware.bin and .elf, and change the lcd
+# part in diagram.json from wokwi-ili9341 to a wokwi-st7789 variant.
+
+[wokwi]
+version = 1
+# The ESP32-2432S028R-WOKWI env extends the upstream ESP32-2432S028R env
+# with two things: WOKWI_SIM=1 (bypasses WiFiManager and returns mock data
+# from monitor.cpp's getXxxData() so screens render without internet) and
+# wokwi_merge.py (post-build hook that produces firmware_merged.bin with
+# the bootloader + partitions + app inlined at the right offsets).
+#
+# Build with:
+#     pio run -e ESP32-2432S028R-WOKWI
+#
+# Then F1 -> "Wokwi: Start Simulator".
+firmware = '.pio/build/ESP32-2432S028R-WOKWI/firmware_merged.bin'
+elf      = '.pio/build/ESP32-2432S028R-WOKWI/firmware.elf'
+# Required only when starting in Debug Mode (F5). Plain Start Simulator
+# (F1 -> "Wokwi: Start Simulator") works without it.
+gdbServerPort = 3333

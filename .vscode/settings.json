@@ -1,0 +1,32 @@
+{
+  // Project-shared VS Code settings. Keep this file portable — anything
+  // machine-specific (absolute paths, personal shortcuts, etc.) belongs
+  // in the user's User Settings, not here.
+
+  // ----- PATH workaround -----
+  // PlatformIO and other tools shell out to `git` for library installs and
+  // version checks. If `git` on PATH is a custom wrapper (e.g. AI git tools
+  // installed under ~/.git-ai/) PIO's library manager will fail with
+  // "Please install Git client...". Prepending /opt/homebrew/bin (where
+  // brew installs the canonical git) makes the stock git win.
+  //
+  // - terminal.integrated.env.osx fixes integrated-terminal commands.
+  // - platformio-ide.customPATH fixes PIO IDE's internal subprocess calls.
+  "terminal.integrated.env.osx": {
+    "PATH": "/opt/homebrew/bin:${env:PATH}"
+  },
+  "platformio-ide.customPATH": "/opt/homebrew/bin",
+
+  // ----- Editor quality-of-life -----
+  "files.associations": {
+    "*.ino": "cpp"
+  },
+  "files.watcherExclude": {
+    "**/.pio/**": true,
+    "**/Freenove_ESP32_Display/**": true
+  },
+  "search.exclude": {
+    "**/.pio": true,
+    "**/Freenove_ESP32_Display": true
+  }
+}

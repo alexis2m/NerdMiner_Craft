@@ -6,6 +6,9 @@
 #include <TFT_eTouch.h>
 #include "media/images_320_170.h"
 #include "media/images_bottom_320_70.h"
+#ifdef MINECRAFT_THEME
+#include "media/minecraft_loading_320_170.h"
+#endif
 #include "media/myFonts.h"
 #include "media/Free_Fonts.h"
 #include "version.h"
@@ -63,13 +66,18 @@ void esp32_2432S028R_Init(void)
   tft.invertDisplay(invertColors);
   tft.setRotation(1);    
   tft.setSwapBytes(true); // Swap the colour byte order when rendering
+#if defined(ILI9341_DRIVER) || defined(ILI9341_2_DRIVER)
+  // ILI9341-specific gamma re-curve, only relevant when colours are
+  // inverted (purely cosmetic). ST7789 uses different gamma registers
+  // and ships with acceptable defaults — skip the override there.
   if (invertColors) {
     tft.writecommand(ILI9341_GAMMASET);
     tft.writedata(2);
     delay(120);
     tft.writecommand(ILI9341_GAMMASET); //Gamma curve selected
-    tft.writedata(1); 
+    tft.writedata(1);
   }
+#endif
   hSPI.begin(TOUCH_CLK, TOUCH_MISO, TOUCH_MOSI, ETOUCH_CS);
   touch.init();
 
@@ -509,12 +517,19 @@ void esp32_2432S028R_BTCprice(unsigned long mElapsed)
 void esp32_2432S028R_LoadingScreen(void)
 {
   tft.fillScreen(TFT_BLACK);
+#ifdef MINECRAFT_THEME
+  tft.pushImage(0, 33, mcLoadingScreenWidth, mcLoadingScreenHeight, mcLoadingScreen);
+  // Version text overlaid in white over the wooden plank panel
+  tft.setTextColor(TFT_WHITE);
+  tft.drawString(CURRENT_VERSION, 230, 147, FONT2);
+#else
   tft.pushImage(0, 33, initWidth, initHeight, initScreen);
   tft.setTextColor(TFT_BLACK);
   tft.drawString(CURRENT_VERSION, 24, 147, FONT2);
   // delay(2000);
   // tft.fillScreen(TFT_BLACK);
   // tft.pushImage(0, 0, initWidth, initHeight, MinerScreen);
+#endif
 }
 
 void esp32_2432S028R_SetupScreen(void)
