@@ -322,6 +322,24 @@ mining_data getMiningData(unsigned long mElapsed)
 {
   mining_data data;
 
+#ifdef WOKWI_SIM
+  // Mock data for the Wokwi simulator. No actual mining is happening; the
+  // numbers are static so screen layouts can be visually iterated. Roughly
+  // realistic values for an ESP32 NerdMiner: ~60 KH/s, several thousand
+  // accepted shares over a couple of days, single-digit best-difficulty.
+  data.completedShares = "42";
+  data.totalKHashes    = "12345";
+  data.totalMHashes    = "12.3";
+  data.currentHashRate = "60.5";
+  data.templates       = "117";
+  data.bestDiff        = "256";
+  data.timeMining      = "2d 14h 33m";
+  data.valids          = "0";
+  data.temp            = "37";
+  data.currentTime     = "13:37";
+  return data;
+#endif
+
   char best_diff_string[16] = {0};
   suffix_string(best_diff, best_diff_string, 16, 0);
 
@@ -353,6 +371,17 @@ clock_data getClockData(unsigned long mElapsed)
 {
   clock_data data;
 
+#ifdef WOKWI_SIM
+  data.completedShares = "42";
+  data.totalKHashes    = "12345";
+  data.currentHashRate = "60.5";
+  data.btcPrice        = "98742";
+  data.blockHeight     = "879654";
+  data.currentTime     = "13:37";
+  data.currentDate     = "2026-05-10";
+  return data;
+#endif
+
   data.completedShares = shares;
   data.totalKHashes = totalKHashes;
   data.currentHashRate = getCurrentHashRate(mElapsed);
@@ -378,6 +407,21 @@ clock_data_t getClockData_t(unsigned long mElapsed)
 coin_data getCoinData(unsigned long mElapsed)
 {
   coin_data data;
+
+#ifdef WOKWI_SIM
+  data.completedShares  = "42";
+  data.totalKHashes     = "12345";
+  data.currentHashRate  = "60.5";
+  data.btcPrice         = "98742";
+  data.currentTime      = "13:37";
+  data.halfHourFee      = "12 sat/vB";
+  data.netwrokDifficulty = "81.7T";
+  data.globalHashRate   = "745.2 EH/s";
+  data.blockHeight      = "879654";
+  data.progressPercent  = 75;
+  data.remainingBlocks  = "52500 BLOCKS";
+  return data;
+#endif
 
   updateGlobalData(); // Update gData vars asking mempool APIs
 
@@ -437,9 +481,15 @@ String getPoolAPIUrl(void) {
 }
 
 pool_data getPoolData(void){
-    //pool_data pData;    
-    if((mPoolUpdate == 0) || (millis() - mPoolUpdate > UPDATE_POOL_min * 60 * 1000)){      
-        if (WiFi.status() != WL_CONNECTED) return pData;            
+#ifdef WOKWI_SIM
+    pData.workersCount   = 1;
+    pData.workersHash    = "60.5 KH/s";
+    pData.bestDifficulty = "256";
+    return pData;
+#endif
+    //pool_data pData;
+    if((mPoolUpdate == 0) || (millis() - mPoolUpdate > UPDATE_POOL_min * 60 * 1000)){
+        if (WiFi.status() != WL_CONNECTED) return pData;
         //Make first API call to get global hash and current difficulty
         HTTPClient http;
         http.setTimeout(10000);        

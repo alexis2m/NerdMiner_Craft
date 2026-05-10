@@ -18,27 +18,18 @@
 
 [wokwi]
 version = 1
-# Wokwi loads a single .bin starting at flash offset 0x0, expecting the
-# bootloader to be at the start. PlatformIO's per-target firmware.bin is
-# only the application (it goes to 0x10000 on real hardware), so loading
-# it standalone causes the simulator to interpret app bytes as bootloader,
-# which crashes immediately at the entry point and boot-loops with
-# rst:0x3 (SW_RESET).
+# The ESP32-2432S028R-WOKWI env extends the upstream ESP32-2432S028R env
+# with two things: WOKWI_SIM=1 (bypasses WiFiManager and returns mock data
+# from monitor.cpp's getXxxData() so screens render without internet) and
+# wokwi_merge.py (post-build hook that produces firmware_merged.bin with
+# the bootloader + partitions + app inlined at the right offsets).
 #
-# firmware_merged.bin is a single image with bootloader (0x1000) +
-# partitions (0x8000) + app (0x10000), produced by:
+# Build with:
+#     pio run -e ESP32-2432S028R-WOKWI
 #
-#   esptool.py --chip esp32 merge_bin \
-#     -o .pio/build/ESP32-2432S028R/firmware_merged.bin \
-#     --flash_mode dio --flash_freq 80m --flash_size 4MB \
-#     0x1000  .pio/build/ESP32-2432S028R/bootloader.bin \
-#     0x8000  .pio/build/ESP32-2432S028R/partitions.bin \
-#     0x10000 .pio/build/ESP32-2432S028R/firmware.bin
-#
-# A PlatformIO post-build hook to regenerate this on every `pio run` will
-# follow once we've confirmed Wokwi boots from it.
-firmware = '.pio/build/ESP32-2432S028R/firmware_merged.bin'
-elf      = '.pio/build/ESP32-2432S028R/firmware.elf'
+# Then F1 -> "Wokwi: Start Simulator".
+firmware = '.pio/build/ESP32-2432S028R-WOKWI/firmware_merged.bin'
+elf      = '.pio/build/ESP32-2432S028R-WOKWI/firmware.elf'
 # Required only when starting in Debug Mode (F5). Plain Start Simulator
 # (F1 -> "Wokwi: Start Simulator") works without it.
 gdbServerPort = 3333

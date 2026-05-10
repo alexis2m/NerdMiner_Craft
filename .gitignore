@@ -6,6 +6,10 @@
 # Merged-firmware output written by post_build_merge.py after every `pio run`
 firmware/
 
+# Wokwi simulator runtime artifacts (network capture, debug session output)
+wokwi.pcap
+.wokwi/
+
 # VS Code: ignore machine-specific files (PIO regenerates them per machine)
 # but keep the project-shared settings and extension recommendations tracked.
 .vscode/*
