@@ -1,0 +1,53 @@
+.github/workflows/lint.yml
+  s_61fc6136a61861::t_e43c90cbfdecba 43
+  s_b2fae3527eaaba::t_55f464a376fbd2 1-42
+.github/dependabot.yml
+  s_b2fae3527eaaba::t_bd29c71b9fc53e 1-16
+.github/ISSUE_TEMPLATE/feature_request.yml
+  s_b2fae3527eaaba::t_a02e44075c19f9 1-41
+.github/labels.yml
+  s_b2fae3527eaaba::t_c2c9260256db54 1-50
+.github/workflows/release.yml
+  s_b2fae3527eaaba::t_301fa11619d584 64-65
+  s_b2fae3527eaaba::t_5e4a4ef0ebcfdd 1
+  s_b2fae3527eaaba::t_05885c4044e1c7 51,53-54
+.github/ISSUE_TEMPLATE/config.yml
+  s_b2fae3527eaaba::t_f99d60206208a5 1-8
+.github/ISSUE_TEMPLATE/theme_proposal.yml
+  s_b2fae3527eaaba::t_35d79674974c2f 1-50
+.github/PULL_REQUEST_TEMPLATE.md
+  s_b2fae3527eaaba::t_3938dcb693c7be 1-38
+.github/ISSUE_TEMPLATE/bug_report.yml
+  s_b2fae3527eaaba::t_b00a1d8bacdd05 1-70
+.github/CODEOWNERS
+  s_b2fae3527eaaba::t_6e201a51ef903f 1-23
+.github/workflows/build.yml
+  s_b2fae3527eaaba::t_f66bf3d2e931a5 1-87
+.github/workflows/prerelease.yml
+  s_b2fae3527eaaba::t_39a9569e5b288b 76-77
+  s_b2fae3527eaaba::t_9efd09e8c34324 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "1d0568d8d9271f94b6136358f57d9f14072f2ae2",
+  "prompts": {},
+  "sessions": {
+    "s_61fc6136a61861": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a310031-db8b-4fc4-96a9-ea29b9298e43",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Alexis <hello@alexismaison.com>"
+    },
+    "s_b2fae3527eaaba": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "690026e5-516d-477b-9122-dcb4f5d410f5",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Alexis <hello@alexismaison.com>"
+    }
+  }
+}
