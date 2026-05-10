@@ -1,0 +1,33 @@
+wokwi_merge.py
+  s_61fc6136a61861::t_31654321f1aabf 1-60
+.gitignore
+  s_61fc6136a61861::t_6363ed038ed9a5 9-12
+src/wManager.cpp
+  s_61fc6136a61861::t_24b7094eddbca1 138-149
+  s_61fc6136a61861::t_2a1887fc2c6096 444-447
+platformio.ini
+  s_61fc6136a61861::t_0a0b187d4ebd96 1170-1187
+wokwi.toml
+  s_61fc6136a61861::t_85478df16ac266 21-25,27-28,30-32
+src/monitor.cpp
+  s_61fc6136a61861::t_c51ace7941876c 325-342
+  s_61fc6136a61861::t_47d226e96cd10c 411-425
+  s_61fc6136a61861::t_5cc424e08414ee 484-492
+  s_61fc6136a61861::t_d78cbf367bd19a 374-384
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "6ec3ed99face94fc0e646245389c22d0474ca8d9",
+  "prompts": {},
+  "sessions": {
+    "s_61fc6136a61861": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a310031-db8b-4fc4-96a9-ea29b9298e43",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Alexis <hello@alexismaison.com>"
+    }
+  }
+}
