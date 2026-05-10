@@ -41,6 +41,20 @@ Artifacts land under `.pio/build/<env>/`:
 - `bootloader.bin`   — second-stage bootloader
 - `partitions.bin`   — partition table
 
+## Simulating in Wokwi (no hardware required)
+
+Wokwi runs the actual `firmware.bin` against a virtual ESP32 + TFT panel in your browser. Use it for screen iteration, captive-portal walk-throughs, and Stratum smoke-tests before risking the board.
+
+1. Sign in at [wokwi.com](https://wokwi.com) (Sign in with GitHub is fine — no plan to pick).
+2. Install the **Wokwi for VS Code** extension. Open the repo in VS Code.
+3. Build a firmware: `pio run -e ESP32-2432S028R` (the upstream env is the default Wokwi target until the FNK0103B env lands).
+4. Open `wokwi.toml`. The "Start Simulator" code lens appears above the file — click it, or run `Wokwi: Start Simulator` from the command palette.
+5. The diagram from `diagram.json` opens alongside the running chip. Click the green BOOT button to cycle screens; click RESET to reboot.
+
+The default diagram includes BOOT/RESET buttons and the RGB LED triplet — wired to the same GPIOs as the real FNK0103B. Wi-Fi is simulated through Wokwi's virtual gateway, so the captive portal and Stratum traffic to `public-pool.io` actually work end-to-end.
+
+Caveats: simulated SHA-256 is ~100× slower than the real ESP32 (irrelevant for UI work); SPI frequencies above ~40 MHz that work in sim may need lowering on real hardware; strapping-pin boot quirks aren't modeled.
+
 ## Flashing
 
 ### Easy path: PlatformIO
@@ -57,7 +71,7 @@ If `pio` can't see the port, drop to esptool:
 
 ```bash
 pip install esptool
-esptool.py --chip esp32s3 --port /dev/cu.usbmodemXXXX --baud 921600 \
+esptool.py --chip esp32 --port /dev/cu.usbmodemXXXX --baud 921600 \
     write_flash \
     0x0000  .pio/build/<env>/bootloader.bin \
     0x8000  .pio/build/<env>/partitions.bin \
@@ -84,7 +98,7 @@ A "brick" usually means a bad partition table or a flash that didn't finish. Ste
 2. Erase flash:
 
    ```bash
-   esptool.py --chip esp32s3 --port <port> erase_flash
+   esptool.py --chip esp32 --port <port> erase_flash
    ```
 
 3. Reflash from scratch with the manual path above.
