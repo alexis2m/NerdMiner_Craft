@@ -20,3 +20,6 @@
 version = 1
 firmware = '.pio/build/ESP32-2432S028R/firmware.bin'
 elf      = '.pio/build/ESP32-2432S028R/firmware.elf'
+# Required only when starting in Debug Mode (F5). Plain Start Simulator
+# (F1 -> "Wokwi: Start Simulator") works without it.
+gdbServerPort = 3333

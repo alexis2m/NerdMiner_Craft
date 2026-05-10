@@ -55,8 +55,10 @@
     }
   ],
   "connections": [
-    [ "lcd:VCC",   "esp:3V3",   "red",    [] ],
-    [ "lcd:GND",   "esp:GND.1", "black",  [] ],
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "lcd:VCC", "esp:5V",    "red",   [] ],
+    [ "lcd:GND", "esp:GND.2", "black", [] ],
     [ "lcd:CS",   "esp:15", "orange", [] ],
     [ "lcd:RST",  "esp:12", "purple", [] ],
     [ "lcd:D/C",  "esp:2",  "yellow", [] ],
@@ -64,15 +66,15 @@
     [ "lcd:SCK",  "esp:14", "blue",   [] ],
     [ "lcd:LED",  "esp:21", "white",  [] ],
     [ "btn-boot:1.l",  "esp:0",     "green", [] ],
-    [ "btn-boot:2.l",  "esp:GND.1", "black", [] ],
+    [ "btn-boot:2.l",  "esp:GND.2", "black", [] ],
     [ "btn-reset:1.l", "esp:EN",    "red",   [] ],
-    [ "btn-reset:2.l", "esp:GND.1", "black", [] ],
+    [ "btn-reset:2.l", "esp:GND.2", "black", [] ],
     [ "led-r:A", "esp:4",     "red",   [] ],
-    [ "led-r:C", "esp:GND.1", "black", [] ],
+    [ "led-r:C", "esp:GND.2", "black", [] ],
     [ "led-g:A", "esp:16",    "green", [] ],
-    [ "led-g:C", "esp:GND.1", "black", [] ],
+    [ "led-g:C", "esp:GND.2", "black", [] ],
     [ "led-b:A", "esp:17",    "blue",  [] ],
-    [ "led-b:C", "esp:GND.1", "black", [] ]
+    [ "led-b:C", "esp:GND.2", "black", [] ]
   ],
   "dependencies": {}
 }
