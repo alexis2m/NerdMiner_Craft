@@ -71,30 +71,12 @@ void setup()
     Serial.begin(115200);
 #endif //MONITOR_SPEED
 
-  // ===== TEMP WOKWI DIAGNOSTIC — REMOVE BEFORE MERGE =====
-  // Each marker is followed by Serial.flush() + delay so we see it
-  // even if the next call crashes the chip immediately.
-  Serial.println(">>>WOKWI-MARK A: post-Serial.begin");
-  Serial.flush();
-  delay(50);
-
   Serial.setTimeout(0);
   delay(SECOND_MS/10);
-  Serial.println(">>>WOKWI-MARK B: post-setTimeout+delay");
-  Serial.flush();
-  delay(50);
 
   esp_task_wdt_init(WDT_MINER_TIMEOUT, true);
-  Serial.println(">>>WOKWI-MARK C: post-esp_task_wdt_init");
-  Serial.flush();
-  delay(50);
-
   // Idle task that would reset WDT never runs, because core 0 gets fully utilized
   disableCore0WDT();
-  Serial.println(">>>WOKWI-MARK D: post-disableCore0WDT");
-  Serial.flush();
-  delay(50);
-  // ===== END WOKWI DIAGNOSTIC =====
   //disableCore1WDT();
 
 #ifdef HW_SHA256_TEST
@@ -109,11 +91,6 @@ void setup()
     button1.attachLongPressStart(reset_configuration);
     button1.attachMultiClick(alternateScreenState);
   #endif
-  // ===== TEMP WOKWI DIAGNOSTIC — REMOVE BEFORE MERGE =====
-  Serial.println(">>>WOKWI-MARK E: post-button-setup");
-  Serial.flush();
-  delay(50);
-  // ===== END WOKWI DIAGNOSTIC =====
 
   #if defined(PIN_BUTTON_1) && defined(PIN_BUTTON_2) //Button 1 of two button device
     button1.setPressMs(5*SECOND_MS);
