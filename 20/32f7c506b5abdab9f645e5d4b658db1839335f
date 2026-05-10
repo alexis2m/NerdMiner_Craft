@@ -1,0 +1,21 @@
+wokwi.toml
+  s_61fc6136a61861::t_bd86600eaf5c7d 23-25
+diagram.json
+  s_61fc6136a61861::t_88a4c3f5882eff 58-61,69,71,73,75,77
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "2032f7c506b5abdab9f645e5d4b658db1839335f",
+  "prompts": {},
+  "sessions": {
+    "s_61fc6136a61861": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a310031-db8b-4fc4-96a9-ea29b9298e43",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Alexis <hello@alexismaison.com>"
+    }
+  }
+}
