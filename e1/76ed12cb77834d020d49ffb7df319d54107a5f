@@ -1,0 +1,28 @@
+media-src/minecraft-palette.gpl
+  s_61fc6136a61861::t_e34779ff1e7374 1-40
+media-src/README.md
+  s_61fc6136a61861::t_1fc6804447308a 1-53
+diagram.json
+  s_61fc6136a61861::t_c809391d481199 1-78
+docs/build-and-flash.md
+  s_61fc6136a61861::t_33d0df1d16602f 44-57
+  s_61fc6136a61861::t_8b8235128037ed 74,101
+wokwi.toml
+  s_61fc6136a61861::t_d2c9865a028282 1-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "e176ed12cb77834d020d49ffb7df319d54107a5f",
+  "prompts": {},
+  "sessions": {
+    "s_61fc6136a61861": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a310031-db8b-4fc4-96a9-ea29b9298e43",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Alexis <hello@alexismaison.com>"
+    }
+  }
+}
